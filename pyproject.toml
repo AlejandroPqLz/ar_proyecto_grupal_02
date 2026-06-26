@@ -7,3 +7,6 @@ dependencies = [
     "ipykernel",
     "python-dotenv",
 ]
+
+[tool.setuptools]
+packages = []
