@@ -5,18 +5,28 @@ requires-python = ">=3.9"
 
 dependencies = [
     # General dependencies
+    # ===========================================================
     "ipykernel",
     "python-dotenv",
-    # RL dependencies (adapted for Apple Silicon ARM)
+    # RL dependencies (professor's packages adapted for ARM + Windows/Ubuntu compatibility)
+    # ===========================================================
+    # gym 0.17.3 -> 0.26.2: last stable version with ARM wheels
     "gym==0.26.2",
     "atari-py @ git+https://github.com/Kojoley/atari-py.git",
-    "pyglet>=1.5",
+    # pyglet 1.5.0: compatible across platforms
+    "pyglet==1.5.27",
+    # h5py 3.1.0 -> >=3.7: 3.1.0 requires numpy 1.19.3 which has no ARM wheels
     "h5py>=3.7",
-    "Pillow>=9.5",
+    # Pillow 9.5.0: compatible across platforms
+    "Pillow==9.5.0",
     "keras-rl2==1.0.5",
+    # Keras 2.2.4 + tensorflow 2.5.3 -> tf-keras + tensorflow 2.13.0: ARM native from 2.13
+    "tf-keras",
     "tensorflow==2.13.0",
     "torch>=2.0",
     "agents==1.4.0",
+    # Other dependencies
+    # ===========================================================
     "numpy>=1.23,<2.0",
 ]
 
