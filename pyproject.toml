@@ -14,14 +14,14 @@ dependencies = [
     "h5py>=3.7",
     "Pillow>=9.5",
     "keras-rl2==1.0.5",
-    "tensorflow>=2.13",
+    "tensorflow==2.13.0",
     "torch>=2.0",
     "agents==1.4.0",
     "numpy>=1.23,<2.0",
 ]
 
 [project.optional-dependencies]
-metal = ["tensorflow-metal"]
+metal = ["tensorflow-metal==1.0.1"]
 
 [tool.setuptools]
 packages = []
