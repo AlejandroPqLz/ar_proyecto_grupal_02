@@ -20,5 +20,8 @@ dependencies = [
     "numpy>=1.23,<2.0",
 ]
 
+[project.optional-dependencies]
+metal = ["tensorflow-metal"]
+
 [tool.setuptools]
 packages = []
