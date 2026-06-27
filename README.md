@@ -23,11 +23,12 @@ conda activate ar_env
 Instala las dependencias necesarias:
 
 ```bash
-# macOS Apple Silicon
+# macOS Apple Silicon (M1/M2/M3/M4/M5) — tensorflow-metal + ale-py para Atari
 pip install -e ".[mac]"
+AutoROM --accept-license   # instala las ROMs de Atari
 
-# Linux / Windows / macOS Intel
-pip install -e .
+# Linux / Windows / macOS Intel — versión del profesor
+pip install -e ".[default]"
 ```
 
 ---
@@ -45,9 +46,10 @@ conda activate ar_env
 
 # macOS Apple Silicon
 pip install -e ".[mac]"
+AutoROM --accept-license   # instala las ROMs de Atari
 
 # Linux / Windows / macOS Intel
-pip install -e .
+pip install -e ".[default]"
 ```
 
 ---

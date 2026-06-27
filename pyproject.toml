@@ -18,11 +18,9 @@ dependencies = [
     "tensorflow==2.18.0",
     "tf-keras==2.18.0",
 
-    # RL environment: Gym + Atari
+    # RL environment: Gym + Atari — ver [project.optional-dependencies]
     # ===========================================================
-    "gym==0.17.3",
     "pyglet==1.5.0",
-    "atari-py @ git+https://github.com/Kojoley/atari-py.git",
 
     # RL agent
     # ===========================================================
@@ -38,11 +36,22 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# macOS Apple Silicon: GPU acceleration via Metal plugin
+# Linux / Windows / macOS Intel: versión del profesor
 # ===========================================================
-# Instalar con: pip install -e ".[mac]"
+# Instalar con: pip install -e ".[default]"
+default = [
+    "gym==0.17.3",
+    "atari-py @ git+https://github.com/Kojoley/atari-py.git",
+]
+
+# macOS Apple Silicon: GPU + Atari via ale-py (atari-py roto en ARM64)
+# ===========================================================
+# Instalar con: pip install -e ".[mac]"  → luego: AutoROM --accept-license
 mac = [
     "tensorflow-metal",
+    "gym==0.25.2",
+    "ale-py==0.7.5",
+    "autorom[accept-rom-license]",
 ]
 
 [tool.setuptools]
