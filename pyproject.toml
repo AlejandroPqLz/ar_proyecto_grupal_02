@@ -1,37 +1,49 @@
 [project]
 name = "ar_proyecto_grupal_02"
 version = "0.1.0"
-requires-python = ">=3.9"
+requires-python = ">=3.9,<3.12"
 
 dependencies = [
     # General dependencies
     # ===========================================================
     "ipykernel",
     "python-dotenv",
-    # RL dependencies (professor's packages adapted for ARM + Windows/Ubuntu compatibility)
-    # ===========================================================
-    # gym 0.17.3 -> 0.26.2: last stable version with ARM wheels
-    "gym==0.26.2",
-    "atari-py @ git+https://github.com/Kojoley/atari-py.git",
-    # pyglet 1.5.0: compatible across platforms
-    "pyglet==1.5.27",
-    # h5py 3.1.0 -> >=3.7: 3.1.0 requires numpy 1.19.3 which has no ARM wheels
-    "h5py>=3.7",
-    # Pillow 9.5.0: compatible across platforms
-    "Pillow==9.5.0",
-    "keras-rl2==1.0.5",
-    # Keras 2.2.4 + tensorflow 2.5.3 -> tf-keras + tensorflow 2.13.0: ARM native from 2.13
-    "tf-keras",
-    "tensorflow==2.13.0",
-    "torch>=2.0",
-    "agents==1.4.0",
-    # Other dependencies
-    # ===========================================================
     "numpy>=1.23,<2.0",
+    "Pillow>=9.5.0,<10.0",
+    "h5py>=3.1.0,<4.0",
+
+    # Deep learning: TF + Keras 2 compatibility layer (requerida por keras-rl2)
+    # ===========================================================
+    # Desde TF 2.16, Apple Silicon está soportado en el paquete principal (sin tensorflow-macos)
+    "tensorflow==2.18.0",
+    "tf-keras==2.18.0",
+
+    # RL environment: Gym + Atari
+    # ===========================================================
+    "gym==0.17.3",
+    "pyglet==1.5.0",
+    "atari-py @ git+https://github.com/Kojoley/atari-py.git",
+
+    # RL agent
+    # ===========================================================
+    "keras-rl2==1.0.5",
+
+    # Deep learning: PyTorch
+    # ===========================================================
+    "torch==2.0.1",
+
+    # Agents
+    # ===========================================================
+    "agents==1.4.0",
 ]
 
 [project.optional-dependencies]
-metal = ["tensorflow-metal==1.0.1"]
+# macOS Apple Silicon: GPU acceleration via Metal plugin
+# ===========================================================
+# Instalar con: pip install -e ".[mac]"
+mac = [
+    "tensorflow-metal",
+]
 
 [tool.setuptools]
 packages = []
