@@ -33,6 +33,46 @@ pip install -e ".[default]"
 
 ---
 
+## Variables de entorno
+
+Copia `.env.template` a `.env` y rellena las rutas:
+
+```bash
+cp .env.template .env
+```
+
+---
+
+## Estructura del proyecto
+
+```
+ar_proyecto_grupal_02/
+├── notebooks/
+│   └── ar_proyecto_programacion_02.ipynb   # notebook de trabajo
+├── weights/                                # generado al entrenar
+│   ├── checkpoints/    # pesos cada 250 000 pasos  → dqn_<env>_step<N>.h5f
+│   ├── best/           # pesos cuando mejora reward → dqn_<env>_best_step<N>.h5f
+│   ├── logs/           # log JSON de métricas       → dqn_<env>_log.json
+│   └── final/          # pesos al terminar           → dqn_<env>_final_step<N>.h5f
+└── pyproject.toml
+```
+
+### Pesos guardados durante el entrenamiento
+
+| Carpeta | Cuándo | Nombre |
+|---|---|---|
+| `checkpoints/` | Cada 250 000 pasos | `dqn_<env>_step250000.h5f`, `_step500000.h5f`, … |
+| `best/` | Cada vez que se supera el mejor reward de episodio | `dqn_<env>_best_step<N>.h5f` |
+| `final/` | Al terminar el entrenamiento completo | `dqn_<env>_final_step2000000.h5f` |
+
+Para reanudar un entrenamiento desde un checkpoint, carga los pesos antes de llamar a `dqn.fit()`:
+
+```python
+dqn.load_weights("weights/checkpoints/dqn_SpaceInvaders-v0_step500000.h5f")
+```
+
+---
+
 ## Recrear el entorno desde cero
 
 Si necesitas eliminar el entorno y volver a crearlo:
