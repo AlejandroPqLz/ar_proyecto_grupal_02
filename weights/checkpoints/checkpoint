@@ -1,2 +1,2 @@
-model_checkpoint_path: "dqn_Enduro-v0_step1100000.h5f"
-all_model_checkpoint_paths: "dqn_Enduro-v0_step1100000.h5f"
+model_checkpoint_path: "dqn_Enduro-v0_step1400000.h5f"
+all_model_checkpoint_paths: "dqn_Enduro-v0_step1400000.h5f"
